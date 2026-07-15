@@ -1,37 +1,63 @@
-import MovieCard from "../components/MovieCard"
-import {useState} from "react"
+import { useState } from "react";
+import MovieCard from "../components/MovieCard";
+import "../css/Home.css";
 
 function Home() {
-    const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const handleSearch = (e) => {
+    e.preventDefault();
+    alert(`Searching for ${searchQuery}`);
+  };
 
-    const movies = [
-        {id: 1, title: "strawberry shortcake", release_date: "2022"},
-        {id: 2, title: "Narnia", release_date: "2000"},
-        {id: 3, title: "Harry potter", release_date: "1999"},
-    ];
+  const movies = [
+    {
+      id: 1,
+      title: "Inception",
+      release_date: "2010",
+      url: "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
+    },
+    {
+      id: 2,
+      title: "Interstellar",
+      release_date: "2014",
+      url: "https://image.tmdb.org/t/p/w500/gEU2QlsUUQZnSn44X585zF8F.jpg"
+    },
+    {
+      id: 3,
+      title: "The Dark Knight",
+      release_date: "2008",
+      url: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+    },
+    {
+      id: 4,
+      title: "Dune",
+      release_date: "2021",
+      url: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg"
+    }
+  ];
 
-    const handleSearch = () => {
-        e.preventDefault()
-        alert(searchQuery)
-    };
-    
-    return (
+  return (
     <div className="home">
-        <form onSubmit={handleSearch} className="search-form">
-            <input type="text" placeholder="Search for a movie..." className="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
-            <button type="submit" className="search-button">Search</button>
-        </form>
+      <form onSubmit={handleSearch} className="search-form">
+        <input 
+          type="text" 
+          placeholder="Search for movies..." 
+          className="search-input"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button type="submit" className="search-button">Search</button>
+      </form>
 
-
-        <div className="movies-grid">
-            {movies.map((movie) => (
-                movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && 
-                <MovieCard movie={movie} key={movie.id}/>
-                )
-            )}
-        </div>
+      <div className="movies-grid">
+        {movies.map((movie) => (
+          movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && 
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
-    );
+  );
 }
 
-export default Home
+export default Home;

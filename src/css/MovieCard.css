@@ -1,0 +1,117 @@
+.movie-card {
+  position: relative;
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed);
+}
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.05);
+}
+
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 12, 17, 0.9) 0%,
+    rgba(13, 12, 17, 0) 50%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.movie-card:hover .favorite-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.favorite-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ff3366;
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #ff3366;
+  background-color: rgba(255, 51, 102, 0.1);
+}
+
+.movie-info {
+  padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.movie-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-info p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  margin-top: auto;
+}
