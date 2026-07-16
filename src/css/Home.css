@@ -7,7 +7,8 @@
 
 .hero-section {
   text-align: center;
-  margin-bottom: -1rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .hero-section h1 {
@@ -16,65 +17,19 @@
   letter-spacing: -1px;
 }
 
+.search-results-header {
+  margin-bottom: 1rem;
+}
+
+.search-results-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 .highlight {
   background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  max-width: 700px;
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  border-radius: 40px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 5px;
-  backdrop-filter: blur(10px);
-  transition: all var(--transition-speed);
-}
-
-.search-input {
-  width: 100%;
-  padding: 1.2rem 2rem;
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: none;
-  color: var(--text-primary);
-  outline: none;
-}
-
-.search-form:focus-within {
-  border-color: rgba(123, 66, 246, 0.5);
-  box-shadow: 0 0 0 1px rgba(123, 66, 246, 0.5), 0 10px 30px var(--accent-glow);
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.search-button {
-  padding: 0 2.5rem;
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
-  color: white;
-  border-radius: 35px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all var(--transition-speed);
-  box-shadow: 0 4px 15px rgba(123, 66, 246, 0.4);
-}
-
-.search-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(123, 66, 246, 0.6);
-}
-
-.search-button:active {
-  transform: translateY(1px);
 }
 
 .movies-grid {
@@ -101,6 +56,17 @@
   border: 1px solid rgba(255, 51, 102, 0.3);
   max-width: 600px;
   margin: 0 auto;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
 }
 
 @keyframes pulse {
