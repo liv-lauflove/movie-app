@@ -55,4 +55,4 @@ Through this project, the following core React concepts were implemented and mas
 - Handling side-effects and Local Storage synchronization
 
 ---
-*Happy Coding! 🍿*
+liv's the greatest 
