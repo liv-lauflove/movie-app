@@ -1,16 +1,58 @@
-# React + Vite
+# 🎬 MovieFlix - React Practice Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **MovieFlix**, a beautiful and modern React application built as a practice project. It allows users to discover popular movies, search for specific titles, and save their favorite movies to a personal list.
 
-Currently, two official plugins are available:
+This project was built by following the "Learn React With This ONE Project" tutorial, but significantly enhanced with a custom, premium cinematic UI and improved state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **Live Movie Search:** Implemented a debounced search function that queries the TMDB API as you type.
+- **Favorites Management:** A fully functional favorites system using React Context API and Local Storage. Favorites persist across page reloads.
+- **Premium UI / UX:** 
+  - Dark cinematic theme with glassmorphism effects.
+  - Smooth hover animations and gradient highlights.
+  - Custom Toast notifications instead of standard browser alerts.
+- **Page Routing:** Seamless client-side routing using `react-router-dom`.
+- **Dynamic Genres:** Automatically maps TMDB genre IDs to their corresponding readable genre badges on movie cards.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React 19, Vite, React Router DOM
+- **Styling:** Vanilla CSS (Custom modern variables, animations, and gradients)
+- **Data Source:** [TMDB (The Movie Database) API](https://www.themoviedb.org/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/liv-lauflove/movie-app.git
+cd movie-app
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Setup TMDB API Key
+1. Get a free API key from [TMDB](https://www.themoviedb.org/settings/api).
+2. Open `src/services/api.js`.
+3. Replace the `API_KEY` variable with your actual key.
+
+### 4. Run the development server
+```bash
+npm run dev
+```
+Open your browser and navigate to the provided localhost URL.
+
+## 📚 Learning Outcomes
+Through this project, the following core React concepts were implemented and mastered:
+- React Hooks (`useState`, `useEffect`)
+- State management across multiple components using React Context API (`createContext`, `useContext`)
+- Component architecture and reusability
+- Making asynchronous API calls and handling loading/error states
+- Form handling and debouncing
+- Handling side-effects and Local Storage synchronization
+
+---
+*Happy Coding! 🍿*
