@@ -14,8 +14,13 @@ function MovieCard({movie}) {
 
     function onFavoriteClick(e) {
         e.preventDefault();
-        if (favorite) removeFavorite(movie.id);
-        else addFavorite(movie);
+        if (favorite) {
+            removeFavorite(movie.id);
+            alert(`"${movie.title}" dihapus dari favorit!`);
+        } else {
+            addFavorite(movie);
+            alert(`"${movie.title}" ditambahkan ke favorit!`);
+        }
     }
 
     return (
