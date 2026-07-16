@@ -26,18 +26,35 @@ function Home() {
     fetchPopularMovies();
   }, []);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    alert(searchQuery);
-    setSearchQuery("");
+    if (!searchQuery.trim()) return;
+    
+    if (loading) return;
+    setLoading(true);
+    setError(null);
+
+    try {
+        const searchResults = await searchMovies(searchQuery);
+        setMovies(searchResults);
+    } catch (err) {
+        console.log(err);
+        setError("Failed to search movies.");
+    } finally {
+        setLoading(false);
+    }
   };
 
   return (
     <div className="home">
+      <div className="hero-section">
+        <h1>Discover Your Next <span className="highlight">Favorite</span> Movie</h1>
+      </div>
+
       <form onSubmit={handleSearch} className="search-form">
         <input 
           type="text" 
-          placeholder="Search for movies..." 
+          placeholder="Search for movies, actors, directors..." 
           className="search-input"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -45,13 +62,14 @@ function Home() {
         <button type="submit" className="search-button">Search</button>
       </form>
 
+      {error && <div className="error-message">{error}</div>}
+
       {loading ? (
-        <div className="loading">Loading...</div>
+        <div className="loading">Searching movies...</div>
       ) : (
         <div className="movies-grid">
           {movies.map((movie) => (
-            movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && 
-            <MovieCard key={movie.id} movie={movie} />
+            movie.poster_path && <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
       )}

@@ -20,6 +20,11 @@ function MovieCard({movie}) {
             <div className="movie-info">
                 <h3>{movie.title}</h3>
                 <p>{movie.release_date?.split("-")[0]}</p>
+                {/* We will populate genres later from TMDB, using dummy badges for now to make UI pop */}
+                <div className="movie-genres">
+                    <span className="genre-badge">Action</span>
+                    <span className="genre-badge">Sci-Fi</span>
+                </div>
             </div>
         </div>
     );
