@@ -4,15 +4,16 @@ const MovieContext = createContext();
 export const useMovieContext = () => useContext(MovieContext);
 
 export const MovieProvider = ({children}) => {
-    const [favorites, setFavorites] = useState([]);
+    // Initialize state directly from localStorage so it doesn't get overwritten on first render
+    const [favorites, setFavorites] = useState(() => {
+        const storedFavs = localStorage.getItem('favorites');
+        return storedFavs ? JSON.parse(storedFavs) : [];
+    });
+    
     const [searchQuery, setSearchQuery] = useState("");
     const [toastMessage, setToastMessage] = useState(null);
-    
-    useEffect(() => {
-        const storedFavs = localStorage.getItem('favorites');
-        if (storedFavs) setFavorites(JSON.parse(storedFavs));
-    }, []);
 
+    // Only one useEffect needed to save changes to localStorage
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }, [favorites]);
