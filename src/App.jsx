@@ -2,6 +2,7 @@ import "./App.css";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
+import Toast from "./components/Toast";
 import { Routes, Route } from "react-router-dom";
 import { MovieProvider } from "./contexts/MovieContext";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
+      <Toast />
     </MovieProvider>
   );
 }

@@ -6,6 +6,7 @@ export const useMovieContext = () => useContext(MovieContext);
 export const MovieProvider = ({children}) => {
     const [favorites, setFavorites] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [toastMessage, setToastMessage] = useState(null);
     
     useEffect(() => {
         const storedFavs = localStorage.getItem('favorites');
@@ -27,6 +28,13 @@ export const MovieProvider = ({children}) => {
     const isFavorite = (movieId) => {
         return favorites.some(m => m.id === movieId);
     }
+
+    const showToast = (message) => {
+        setToastMessage(message);
+        setTimeout(() => {
+            setToastMessage(null);
+        }, 3000);
+    }
     
     const value = { 
         favorites, 
@@ -34,7 +42,9 @@ export const MovieProvider = ({children}) => {
         removeFavorite, 
         isFavorite,
         searchQuery,
-        setSearchQuery
+        setSearchQuery,
+        toastMessage,
+        showToast
     };
     
     return <MovieContext.Provider value={value}>{children}</MovieContext.Provider>

@@ -9,17 +9,17 @@ const GENRES = {
 };
 
 function MovieCard({movie}) {
-    const { isFavorite, addFavorite, removeFavorite } = useMovieContext();
+    const { isFavorite, addFavorite, removeFavorite, showToast } = useMovieContext();
     const favorite = isFavorite(movie.id);
 
     function onFavoriteClick(e) {
         e.preventDefault();
         if (favorite) {
             removeFavorite(movie.id);
-            alert(`"${movie.title}" dihapus dari favorit!`);
+            showToast(`"${movie.title}" removed from favorites!`);
         } else {
             addFavorite(movie);
-            alert(`"${movie.title}" ditambahkan ke favorit!`);
+            showToast(`"${movie.title}" added to favorites!`);
         }
     }
 
